@@ -3,11 +3,12 @@ import "./App.css";
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Mail from "./components/mail";
-import {  toast } from "react-toastify";
+import { ToastContainer ,toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-toast.configure();
 function App() {
-  const uploadNotify = () => toast.success("File uploaded successfully");
+  const uploadNotify = () => {
+    toast.success("File uploaded successfully")
+  toast.info("")};
   const copyNotify = () => toast.success("successfully copied");
   const copyErrorNotify = () => toast.error("something went wrong");
   const fileNotify = () => toast.error("Upload your file first");
@@ -99,6 +100,8 @@ function App() {
         <div> {file && `${file.name}`}</div>
       </form>
       {text && (
+        <>
+          <p>You can copy this link and view on another page</p>
         <div className="copy">
           <p>{text}</p>
           <svg
@@ -118,8 +121,10 @@ function App() {
             />
           </svg>
         </div>
+        </>
       )}
       <Mail />
+      <ToastContainer/>
     </div>
   );
 }

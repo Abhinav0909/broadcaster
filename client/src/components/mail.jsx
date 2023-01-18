@@ -1,8 +1,7 @@
 import React from "react";
 import "./mail.css";
-import { toast } from "react-toastify";
+import { ToastContainer,toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-toast.configure();
 const Mail = () => {
   const [uuid, setUuid] = React.useState("");
   const [sender, setSender] = React.useState("");
@@ -64,6 +63,7 @@ const Mail = () => {
           </button>
         </div>
       </form>
+      <ToastContainer />
     </>
   );
 };
