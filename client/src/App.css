@@ -1,0 +1,57 @@
+.App{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100vh;
+  flex-direction: column;
+  
+}
+#form-file-upload{
+  height:16rem;
+  width:28rem;
+  max-width: 100%;
+  text-align: center;
+  position: relative;
+  margin-bottom:30px;
+ 
+}
+#input-file-upload{
+  display: none;
+
+}
+#label-file-upload{
+  height:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  border-width: 2px;
+  border-style:dashed;
+  border-color:#cbd5e1;
+  background-color: #f8fafc;
+}
+.upload-button{
+  cursor: pointer;
+  padding: 0.25rem;
+  font-size: 1rem;
+  border:none;
+  font-family:Arial, Helvetica, sans-serif;
+  background-color: transparent;
+}
+.upload-button:hover{
+  text-decoration-line: underline;
+
+}
+.copy{
+border:2px solid black;
+border-style:dashed;
+border-radius: 1rem;
+padding:0 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin:20px 0;
+}
+.copy svg{
+  cursor: pointer;
+}

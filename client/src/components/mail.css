@@ -1,0 +1,26 @@
+.mailContainer{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    border-style:none;
+    margin:10px 0;   
+    border-bottom: 2px solid lightgrey;
+    background-color: #fcfcfc;
+    width: 100%;
+    padding:10px;
+}
+input:focus{
+    outline:none;
+}
+.mailContainer>button[type="submit"]{
+    background-color:rgb(167, 167, 226);
+    color:whitesmoke;
+    border:none;
+    padding:6px;
+    width:50%;
+    cursor: pointer;
+}
+.mailContainer>button[type="submit"]:hover{
+    background-color: blue;
+}
