@@ -1,12 +1,14 @@
 import React from "react";
 import "./mail.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 const Mail = () => {
   const [uuid, setUuid] = React.useState("");
   const [sender, setSender] = React.useState("");
   const [receiver, setReceiver] = React.useState("");
-  const notify = () => toast("Mail has been sent successfully");
+  const notify = () => toast.success("Mail has been sent successfully");
+  const fieldNotify = () => toast.error('All fields are required');
   const fetchData = async (e) => {
     e.preventDefault();
     let data = {
@@ -27,6 +29,8 @@ const Mail = () => {
           setUuid("");
           setSender("");
           setReceiver("")
+        }else if(response.status === 422){
+          fieldNotify();
         }
       })
       .catch((error) => console.error("Error:", error));
@@ -58,7 +62,6 @@ const Mail = () => {
           <button type="submit" onClick={fetchData}>
             Send
           </button>
-          <ToastContainer />
         </div>
       </form>
     </>

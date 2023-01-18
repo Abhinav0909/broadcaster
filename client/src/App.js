@@ -3,12 +3,14 @@ import "./App.css";
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Mail from "./components/mail";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 function App() {
-  const uploadNotify = () => toast("File uploaded successfully");
-  const copyNotify = () => toast("successfully copied");
-  const copyErrorNotify = () => toast("something went wrong");
+  const uploadNotify = () => toast.success("File uploaded successfully");
+  const copyNotify = () => toast.success("successfully copied");
+  const copyErrorNotify = () => toast.error("something went wrong");
+  const fileNotify = () => toast.error("Upload your file first");
   const dropRef = useRef(null);
   const [file, setFile] = useState("");
   const [text, setText] = useState("");
@@ -30,6 +32,9 @@ function App() {
   };
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (!file) {
+      return fileNotify();
+    }
     const formData = new FormData();
     formData.append("myfile", file);
     try {
@@ -52,14 +57,13 @@ function App() {
   };
   const handleCopy = async () => {
     try {
-       await navigator.clipboard.writeText(text);
-    
+      await navigator.clipboard.writeText(text);
+
       copyNotify();
     } catch (err) {
       copyErrorNotify();
     }
   };
-
   useEffect(() => {
     let div = dropRef.current;
     div.addEventListener("dragenter", handleDrag);
@@ -86,7 +90,7 @@ function App() {
         ></input>
         <label id="label-file-upload" htmlFor="input-file-upload">
           <div>
-            <p>Select your file here</p>
+            <p>Drag and drop your file here</p>
             <button className="upload-button" onSubmit={onSubmit}>
               Upload a file
             </button>
@@ -115,7 +119,6 @@ function App() {
           </svg>
         </div>
       )}
-      <ToastContainer />
       <Mail />
     </div>
   );
