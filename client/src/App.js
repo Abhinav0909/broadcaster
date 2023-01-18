@@ -44,7 +44,6 @@ function App() {
       );
       setText(data.data.file);
       setFile("");
-      // alert("File uploaded successfully");
       uploadNotify();
       console.log(data);
     } catch (err) {
